@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.RM.manageSystem.mapper.CustomerMapper">
+
+    <!--新增客戶-->
+    <insert id="addCustomer" parameterType="com.RM.manageSystem.pojo.Customer">
+        INSERT INTO customer
+        (customer_name, gender, phone_number, first_lesson, create_time, update_time,isDelete,
+        <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="birthYear != null and birthYear != ''">
+                birth_year,
+            </if>
+            <if test="email != null and email != ''">
+                email,
+            </if>
+            <if test="lastLesson != null">
+                last_lesson,
+            </if>
+            <if test="totalLessons != null">
+                total_lessons,
+            </if>
+            <if test="coachId != null">
+                coach_id,
+            </if>
+            <if test="remainingLessons != null">
+                remaining_lessons,
+            </if>
+            <if test="medicalHistory != null and medicalHistory != ''">
+                medical_history,
+            </if>
+            <if test="medication != null and medication != ''">
+                medication,
+            </if>
+            <if test="symptoms != null and symptoms != ''">
+                symptoms,
+            </if>
+            <if test="symptomCauses != null and symptomCauses != ''">
+                symptom_causes,
+            </if>
+            <if test="transportationHabits != null and transportationHabits != ''">
+                transportation_habits,
+            </if>
+            <if test="exerciseHabits != null and exerciseHabits != ''">
+                exercise_habits,
+            </if>
+        </trim>
+        )
+        VALUES
+        (#{customerName}, #{gender}, #{phoneNumber}, #{firstLesson}, #{createTime}, #{updateTime},0,
+        <trim prefix="" suffix="" suffixOverrides=",">
+            <if test="birthYear != null and birthYear != ''">
+                #{birthYear},
+            </if>
+            <if test="email != null and email != ''">
+                #{email},
+            </if>
+            <if test="lastLesson != null">
+                #{lastLesson},
+            </if>
+            <if test="totalLessons != null">
+                #{totalLessons},
+            </if>
+            <if test="coachId != null">
+                #{coachId},
+            </if>
+            <if test="remainingLessons != null">
+                #{remainingLessons},
+            </if>
+            <if test="medicalHistory != null and medicalHistory != ''">
+                #{medicalHistory},
+            </if>
+            <if test="medication != null and medication != ''">
+                #{medication},
+            </if>
+            <if test="symptoms != null and symptoms != ''">
+                #{symptoms},
+            </if>
+            <if test="symptomCauses != null and symptomCauses != ''">
+                #{symptomCauses},
+            </if>
+            <if test="transportationHabits != null and transportationHabits != ''">
+                #{transportationHabits},
+            </if>
+            <if test="exerciseHabits != null and exerciseHabits != ''">
+                #{exerciseHabits},
+            </if>
+        </trim>
+        )
+    </insert>
+
+    <!--查詢客戶-->
+    <select id="listCustomer" resultType="com.RM.manageSystem.pojo.Customer">
+        select * from customer
+        <where>
+            isDelete = 0
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+
+            <if test="coachId != null">
+                and coach_id = #{coachId}
+            </if>
+        </where>
+        order by last_lesson desc
+    </select>
+
+    <!--更新客戶資訊-->
+    <update id="updateCustomer" parameterType="com.RM.manageSystem.pojo.Customer">
+        UPDATE customer
+        <set>
+            <if test="customerName != null">
+                customer_name = #{customerName},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="birthYear != null">
+                birth_year = #{birthYear},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="lastLesson != null">
+                last_lesson = #{lastLesson},
+            </if>
+            <if test="totalLessons != null">
+                total_lessons = #{totalLessons},
+            </if>
+            <if test="remainingLessons != null">
+                remaining_lessons = #{remainingLessons},
+            </if>
+            <if test="coachId != null">
+                coach_id = #{coachId},
+            </if>
+            <if test="medicalHistory != null and medicalHistory != ''">
+                medical_history = #{medicalHistory},
+            </if>
+            <if test="medication != null and medication != ''">
+                medication = #{medication},
+            </if>
+            <if test="symptoms != null and symptoms != ''">
+                symptoms = #{symptoms},
+            </if>
+            <if test="symptomCauses != null and symptomCauses != ''">
+                symptom_causes = #{symptomCauses},
+            </if>
+            <if test="transportationHabits != null and transportationHabits != ''">
+                transportation_habits = #{transportationHabits},
+            </if>
+            <if test="exerciseHabits != null and exerciseHabits != ''">
+                exercise_habits = #{exerciseHabits},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>

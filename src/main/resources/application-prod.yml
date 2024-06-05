@@ -1,0 +1,21 @@
+#生產環境
+server:
+  port: 8080
+spring:
+  config:
+    import: "file:./dataSource.properties"
+  datasource:
+    driver-class-name: ${db.driver-class-name}
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+  data:
+    redis:
+      host: localhost
+      port: 6379
+logging:
+  config: classpath:logback-prod.xml
+mybatis:
+  configuration:
+    #MySQl中已下滑線命名的字段可以和實體類中的駝峰命名屬性自動轉換
+    map-underscore-to-camel-case: true
