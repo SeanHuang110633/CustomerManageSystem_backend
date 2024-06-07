@@ -2,7 +2,7 @@ spring:
   application:
     name: spring-boot
   profiles:
-    active: prod
+    active: dev
 
 #MySQl中已下滑線命名的字段可以和實體類中的駝峰命名屬性自動轉換
 mybatis:

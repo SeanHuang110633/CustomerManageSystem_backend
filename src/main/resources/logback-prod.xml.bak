@@ -9,14 +9,14 @@
 
     <!-- File appender for daily logs -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>C:/ManageSystem/logfile/app.log</file>
+        <file>D:/1RM_Manage_System/Test/app.log</file>
         <encoder>
             <charset>UTF-8</charset>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36}.%M - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover with compression -->
-            <fileNamePattern>C:/ManageSystem/logfile/app.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <fileNamePattern>D:/1RM_Manage_System/Test/app.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
     </appender>

@@ -26,11 +26,11 @@ public class Customer {
     @NotNull(groups = Customer.Add.class)
     private Character gender;
     private Integer birthYear;
-    @NotNull(groups = Customer.Add.class)
     private String phoneNumber;
     @Email
     private String email;
-    @NotNull(groups = Customer.Add.class)
+    private String frequency;  //上課頻率
+    private String approach;  // 知道這間工作室的管道
     @DateTimeFormat
     private LocalDate firstLesson;  //第一次上課日期
     @DateTimeFormat

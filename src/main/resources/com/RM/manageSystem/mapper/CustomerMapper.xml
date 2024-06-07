@@ -6,13 +6,25 @@
     <!--新增客戶-->
     <insert id="addCustomer" parameterType="com.RM.manageSystem.pojo.Customer">
         INSERT INTO customer
-        (customer_name, gender, phone_number, first_lesson, create_time, update_time,isDelete,
+        (customer_name, gender, create_time, update_time,isDelete,
         <trim prefix="" suffix="" suffixOverrides=",">
-            <if test="birthYear != null and birthYear != ''">
+            <if test="birthYear != null">
                 birth_year,
+            </if>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                phone_number,
             </if>
             <if test="email != null and email != ''">
                 email,
+            </if>
+            <if test="frequency != null and frequency != ''">
+                frequency,
+            </if>
+            <if test="approach != null and approach != ''">
+                approach,
+            </if>
+            <if test="firstLesson != null">
+                first_lesson,
             </if>
             <if test="lastLesson != null">
                 last_lesson,
@@ -47,13 +59,25 @@
         </trim>
         )
         VALUES
-        (#{customerName}, #{gender}, #{phoneNumber}, #{firstLesson}, #{createTime}, #{updateTime},0,
+        (#{customerName}, #{gender}, #{createTime}, #{updateTime},0,
         <trim prefix="" suffix="" suffixOverrides=",">
             <if test="birthYear != null and birthYear != ''">
                 #{birthYear},
             </if>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                #{phoneNumber},
+            </if>
             <if test="email != null and email != ''">
                 #{email},
+            </if>
+            <if test="frequency != null and frequency != ''">
+                #{frequency},
+            </if>
+            <if test="approach != null and approach != ''">
+                #{approach},
+            </if>
+            <if test="firstLesson != null">
+                #{firstLesson},
             </if>
             <if test="lastLesson != null">
                 #{lastLesson},
@@ -118,11 +142,20 @@
             <if test="birthYear != null">
                 birth_year = #{birthYear},
             </if>
-            <if test="phoneNumber != null">
+            <if test="phoneNumber != null and phoneNumber != ''" >
                 phone_number = #{phoneNumber},
             </if>
             <if test="email != null and email != ''">
                 email = #{email},
+            </if>
+            <if test="frequency != null and frequency != ''">
+                frequency = #{frequency},
+            </if>
+            <if test="approach != null and approach != ''">
+                approach = #{approach},
+            </if>
+            <if test="firstLesson != null">
+                first_lesson = #{firstLesson},
             </if>
             <if test="lastLesson != null">
                 last_lesson = #{lastLesson},
